@@ -1,17 +1,17 @@
 $(function(){
-  var l = new Login();
+  let login_form = new Login();
 })
 
 
 class Login {
   constructor() {
-    this.submitEvent()
+    this.submitEvent();
   }
 
   submitEvent(){
-    $('form').submit((event)=>{
-      event.preventDefault()
-      this.sendForm()
+    $('#login-form').submit((event)=>{
+      event.preventDefault();
+      this.sendForm();
     })
   }
 
@@ -29,12 +29,13 @@ class Login {
       type: 'POST',
       success: function(php_response){
         if (php_response.msg == "OK") {
+          alert("Acceso correcto");
           window.location.href = 'main.html';
         }else {
           alert(php_response.msg);
         }
       },
-      error: function(){
+      error: function(request, status, error){
         alert("error en la comunicación con el servidor");
       }
     })

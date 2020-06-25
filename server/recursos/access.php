@@ -15,7 +15,7 @@
             if($this->conexion->connect_error){
                 return "Error: ".$conexion->connect_error;
             }else{
-                return "Ok";
+                return $db_name;
             }
         }
         function eQuery($query){
@@ -27,7 +27,7 @@
         function insert($table,$params,$values){
             $query="INSERT INTO "
                     .$table." (".implode(', ',$params).") ".
-                    "VALUES (".implode(', ',$values).")";
+                    "VALUES (".implode(', ',$values).");";
             $response = $this->conexion->query($query);
             if($response != true){
                 return "Error: Verifique los parametros y sus reglas, verifique que no existan parametros duplicados.";
@@ -35,8 +35,18 @@
                 return "Ok";
             }
         }
+        function checkingExist($table,$conditions){
+            $query="SELECT id FROM ".$table.
+                    " WHERE ".implode(' AND ',$values).";";
+            return $query;
+        }
         
-
+        function validatePassword($table,$nameColumnUser='user',$user,$password){
+            $query="SELECT password FROM ".$table.
+                    " WHERE ".$nameColumnUser."='".$user."';";
+            $result = $this->conexion->query($query)->fetch_assoc();
+            
+            return password_verify($password, $result['password']);
+        }      
     }
-    
 ?>
