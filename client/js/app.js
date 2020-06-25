@@ -16,7 +16,7 @@ class EventsManager {
           processData: false,
           contentType: false,
           type: 'GET',
-          success: (data) =>{
+          success: (data)=>{
             if (data.msg=="OK") {
               this.poblarCalendario(data.eventos)
             }else {
@@ -38,7 +38,6 @@ class EventsManager {
         		center: 'title',
         		right: 'month,agendaWeek,basicDay'
         	},
-        	defaultDate: '2016-11-01',
         	navLinks: true,
         	editable: true,
         	eventLimit: true,

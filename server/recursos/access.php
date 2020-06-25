@@ -35,18 +35,26 @@
                 return "Ok";
             }
         }
-        function checkingExist($table,$conditions){
-            $query="SELECT id FROM ".$table.
-                    " WHERE ".implode(' AND ',$values).";";
-            return $query;
-        }
-        
         function validatePassword($table,$nameColumnUser='user',$user,$password){
-            $query="SELECT password FROM ".$table.
+            $query="SELECT * FROM ".$table.
                     " WHERE ".$nameColumnUser."='".$user."';";
             $result = $this->conexion->query($query)->fetch_assoc();
-            
+            session_start();
+            $_SESSION["id"]=$result['id'];
+            $_SESSION["username"]=$result['full_name'];
+            $_SESSION["dob"]=$result['dob'];
+
             return password_verify($password, $result['password']);
         }      
+        function getRegisterBy($table,$param,$id,$valuesToRetrun='*'){
+            $query="SELECT ".$valuesToRetrun." FROM ".$table." WHERE ".$param."=".$id.";";
+            $result = $this->conexion->query($query);
+            $values=array();
+            while ($row = $result->fetch_assoc()) {
+                array_push($values,$row);
+            }
+                    
+            return $values;
+        }
     }
 ?>
