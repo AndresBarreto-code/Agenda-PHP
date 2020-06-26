@@ -103,6 +103,7 @@ class EventsManager {
                 allDay: true
               })
             }else {
+              console.log($('#start_date').val()+" "+$('#start_hour').val());
               $('.calendario').fullCalendar('renderEvent', {
                 title: $('#titulo').val(),
                 start: $('#start_date').val()+" "+$('#start_hour').val(),

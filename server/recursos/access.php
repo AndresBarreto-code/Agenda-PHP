@@ -64,7 +64,21 @@
             }else{
                 return "OK";
             }
-
+        }
+        function updateByIdAndUser($table,$id,$id_user,$values){
+            $set="";
+            foreach($values as $key=>$value){
+                    $set.=$key.'="'.$value.'",';
+            }
+            $query = "UPDATE ".$table." SET ".
+                    rtrim($set,',')
+                     ." WHERE id=".$id." AND id_user=".$id_user;
+            $response = $this->conexion->query($query);
+            if($response != true){
+                return "Error: Verifique los parametros y sus reglas.".$query;
+            }else{
+                return "OK";
+            }
         }
     }
 ?>

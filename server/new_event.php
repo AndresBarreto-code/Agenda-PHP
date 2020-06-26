@@ -5,12 +5,11 @@
     if($response['Conexion']=='agenda'){
         session_start();
         if(isset($_SESSION['username'])){
-            $response['msg']='OK';
             $id=$_SESSION['id'];
         }else{
             $response['msg']='Sesion invalida';
         }
-        if($_POST['allDay']){
+        if($_POST['allDay']=='true'){
             $params=["title","start","allDay","id_user"];
             $values=["'".$_POST['titulo']."'",
                     "'".$_POST['start_date']."'",
