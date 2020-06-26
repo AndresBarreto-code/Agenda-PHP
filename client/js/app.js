@@ -53,6 +53,8 @@ class EventsManager {
             $('.delete-btn').css('background-color', '#a70f19')
           },
           eventDragStop: (event,jsEvent) =>{
+            $('.delete-btn').find('img').attr('src', "img/trash.png");
+            $('.delete-btn').css('background-color', '#8B0913')
             var trashEl = $('.delete-btn');
             var ofs = trashEl.offset();
             var x1 = ofs.left;
@@ -142,8 +144,6 @@ class EventsManager {
           alert("error en la comunicación con el servidor");
         }
       })
-      $('.delete-btn').find('img').attr('src', "img/trash.png");
-      $('.delete-btn').css('background-color', '#8B0913')
     }
 
     actualizarEvento(evento) {

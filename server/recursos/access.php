@@ -56,5 +56,15 @@
                     
             return $values;
         }
+        function deleteByIdAndUser($table,$id,$id_user){
+            $query = "DELETE FROM ".$table." WHERE id=".$id." AND id_user=".$id_user;
+            $response = $this->conexion->query($query);
+            if($response != true){
+                return "Error: Verifique los parametros y sus reglas.".$query;
+            }else{
+                return "OK";
+            }
+
+        }
     }
 ?>
