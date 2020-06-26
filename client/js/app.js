@@ -92,7 +92,7 @@ class EventsManager {
         data: form_data,
         type: 'POST',
         success: (data) =>{
-          if (data.msg=="OK") {
+          if (data.msg=="Ok") {
             alert('Se ha añadido el evento exitosamente')
             if (document.getElementById('allDay').checked) {
               $('.calendario').fullCalendar('renderEvent', {
@@ -108,10 +108,6 @@ class EventsManager {
                 end: $('#end_date').val()+" "+$('#end_hour').val()
               })
             }
-
-
-
-
           }else {
             alert(data.msg)
           }

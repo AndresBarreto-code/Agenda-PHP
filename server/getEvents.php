@@ -9,6 +9,7 @@
             $rows = 'Error en conexion';
         }
         return $rows;
+        $conexion->closeConexion();  
     }
     session_start();
     if(isset($_SESSION['username'])){

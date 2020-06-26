@@ -30,7 +30,7 @@
                     "VALUES (".implode(', ',$values).");";
             $response = $this->conexion->query($query);
             if($response != true){
-                return "Error: Verifique los parametros y sus reglas, verifique que no existan parametros duplicados.";
+                return "Error: Verifique los parametros y sus reglas, verifique que no existan parametros duplicados.".$query;
             }else{
                 return "Ok";
             }
